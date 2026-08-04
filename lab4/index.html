@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dynamic webpage</title>
+		<script src="script.js">
+		</script>
+  </head>
+  <body>
+    <h1>calculator</h1>
+    <input type="number" id="op1" placeholder="enter operand 1" />
+    <input type="number" id="op2" placeholder="enter operand 2" />
+    <select name="operator" id="operator">
+      <option value="plus">+</option>
+      <option value="minus">-</option>
+      <option value="multiply">*</option>
+      <option value="divide">/</option>
+    </select>
+    <button type="submit" onclick="calc()">result</button>
+		<p id="result"></p>
+  </body>
+</html>
