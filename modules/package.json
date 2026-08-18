@@ -1,0 +1,16 @@
+{
+  "name": "modules",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fs-modules.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "dependencies": {
+    "cowsay": "^1.6.0",
+    "figlet": "^1.11.4",
+    "prompt-sync": "^4.2.0"
+  }
+}
