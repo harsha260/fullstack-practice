@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+    }
+    .box {
+      padding: 20px;
+      border-radius: 8px;
+      width: 400px;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+    .row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+    input {
+      flex: 1;
+      padding: 8px;
+    }
+    button {
+      padding: 8px 12px;
+    }
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+    li {
+      margin: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .task-title {
+      flex: 1;
+    }
+    .empty-msg {
+      text-align: center;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>To-Do List</h2>
+    <div class="row">
+      <input type="text" id="input" placeholder="Enter task">
+      <button id="addBtn">Add Tasks</button>
+    </div>
+    <ul id="taskList"></ul>
+    <p id="emptyMsg" class="empty-msg">No tasks</p>
+  </div>
+
+  <script>
+    const input = document.getElementById('input');
+    const addBtn = document.getElementById('addBtn');
+    const taskList = document.getElementById('taskList');
+    const emptyMsg = document.getElementById('emptyMsg');
+
+    function checkEmpty() {
+      emptyMsg.style.display = taskList.children.length === 0 ? 'block' : 'none';
+    }
+
+    addBtn.addEventListener('click', () => {
+      const text = input.value.trim();
+      if (!text) return;
+
+      const li = document.createElement('li');
+      const span = document.createElement('span');
+      span.className = 'task-title';
+      span.textContent = text;
+
+      const compBtn = document.createElement('button');
+      compBtn.textContent = 'done';
+      compBtn.addEventListener('click', () => {
+        span.classList.toggle('completed');
+      });
+
+      const delBtn = document.createElement('button');
+      delBtn.textContent = 'remove';
+      delBtn.addEventListener('click', () => {
+        li.remove();
+        checkEmpty();
+      });
+
+      li.appendChild(span);
+      li.appendChild(compBtn);
+      li.appendChild(delBtn);
+      taskList.appendChild(li);
+
+      input.value = '';
+      checkEmpty();
+    });
+  </script>
+</body>
+</html>
