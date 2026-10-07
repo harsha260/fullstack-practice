@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Q1 - Product Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .box {
+            width: 300px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input {
+            width: 90%;
+            padding: 6px;
+            margin-bottom: 10px;
+        }
+
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h3>Interactive Product Calculator</h3>
+        <p><b>Description:</b> Dynamically calculates total price (Qty &times; Price) using JS event listeners without
+            page refresh.</p>
+        <label>Product Name:</label><br>
+        <input type="text" id="name" placeholder="Laptop"><br>
+        <label>Quantity:</label><br>
+        <input type="number" id="qty" value="1" min="0"><br>
+        <label>Unit Price (₹):</label><br>
+        <input type="number" id="price" value="0" min="0"><br>
+        <div class="total">Total Price: ₹<span id="total">0.00</span></div>
+    </div>
+    <script>
+        // Select input elements and output container
+        const qtyInput = document.getElementById('qty');
+        const priceInput = document.getElementById('price');
+        const totalSpan = document.getElementById('total');
+        // Function to calculate total price dynamically
+        function calculateTotal() {
+            const qty = parseFloat(qtyInput.value) || 0;
+            const price = parseFloat(priceInput.value) || 0;
+            totalSpan.textContent = (qty * price).toFixed(2);
+        }
+        // Attach event listeners for real-time calculation
+        qtyInput.addEventListener('input', calculateTotal);
+        priceInput.addEventListener('input', calculateTotal);
+    </script>
+</body>
+
+</html>
